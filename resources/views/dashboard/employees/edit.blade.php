@@ -23,12 +23,25 @@
                     {{ csrf_field() }}
 
                     @include('dashboard.partials._errors')
+                    <div class="row">
 
-                    {{--name--}}
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" name="name" class="form-control" value="{{ old('name', $employee->name) }}">
-                    </div>
+                        {{--first name--}}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" name="first_name" class="form-control" value="{{ old('first_name', $employee->first_name) }}">
+                            </div>
+                        </div><!-- end of col -->
+
+                        {{--last name--}}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" name="last_name" class="form-control" value="{{ old('last_name', $employee->last_name) }}">
+                            </div>
+                        </div><!-- end of col -->
+
+                    </div><!-- end of row -->
 
                     {{--email--}}
                     <div class="form-group">
@@ -36,17 +49,21 @@
                         <input type="email" name="email" class="form-control" value="{{ old('email', $employee->email) }}">
                     </div>
 
-                    {{--logo--}}
+                    {{--phone--}}
                     <div class="form-group">
-                        <label>Logo</label>
-                        <input type="file" name="logo" class="form-control">
-                        <img src="{{ $employee->logo_path }}" style="margin-top: 10px; width: 100px; height: 100px;" alt="">
+                        <label>Phone</label>
+                        <input type="text" name="phone" class="form-control" value="{{ old('phone', $employee->phone) }}">
                     </div>
 
-                    {{--website--}}
+                    {{--company id--}}
                     <div class="form-group">
-                        <label>Website</label>
-                        <input type="text" name="website" class="form-control" value="{{ old('website', $employee->website) }}">
+                        <label>Company</label>
+                        <select name="company_id" class="form-control">
+                            <option value="">Select Company</option>
+                            @foreach ($companies as $company)
+                                <option value="{{ $company->id }}" {{ $company->id == $employee->company_id ? 'selected' : '' }}>{{ $company->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="form-group">

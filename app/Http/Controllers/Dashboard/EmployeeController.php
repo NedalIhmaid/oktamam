@@ -47,31 +47,23 @@ class EmployeeController extends Controller
 
     public function edit(Employee $employee)
     {
-        return view('dashboard.employees.edit', compact('employee'));
+        $companies = Company::all();
+        return view('dashboard.employees.edit', compact('companies', 'employee'));
 
     }//end of edit
 
     public function update(Request $request, Employee $employee)
     {
         $request->validate([
-            'name' => 'required|unique:employees,name,' . $employee->id,
-            'email' => 'required|email|unique:employees,email,' . $employee->id,
-            'logo' => 'sometimes|nullable|image|dimensions:min_width=100,min_height=100',
-            'website' => 'required|url',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|unique:users,email,' . $employee->id,
+            'phone' => 'required',
+            'company_id' => 'required|exists:companies,id',
         ]);
 
-        $request_data = $request->except(['logo']);
+        $employee->update($request->all());
 
-        if ($request->logo) {
-
-            //delete the old logo
-            Storage::disk('local')->delete('public/logos/' . $employee->logo);
-            $request->file('logo')->store('logos', 'public');
-            $request_data['logo'] = $request->logo->hashName();
-
-        }//end of if 
-
-        $employee->update($request_data);
         session()->flash('success', 'Data updated successfully');
         return redirect()->route('dashboard.employees.index');
 

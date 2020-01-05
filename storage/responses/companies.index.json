@@ -1,0 +1,35 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "company one",
+      "email": "a@gmail.com",
+      "logo": "/storage/logos/KKZXoIgYWm7W21vszlt63YByDkxQUrYytqW8bw4g.jpeg",
+      "employees_count": 0,
+      "website": "http://google.com"
+    },
+    {
+      "id": 2,
+      "name": "company two",
+      "email": "b@gmail.com",
+      "logo": "/storage/logos/dtLPT5sk5syRrbvhnNVxbtRSksrJBw0MCH3n7QAr.jpeg",
+      "employees_count": 0,
+      "website": "http://google.com"
+    }
+  ],
+  "links": {
+    "first": "http://ok.test/api/companies?page=1",
+    "last": "http://ok.test/api/companies?page=1",
+    "prev": null,
+    "next": null
+  },
+  "meta": {
+    "current_page": 1,
+    "from": 1,
+    "last_page": 1,
+    "path": "http://ok.test/api/companies",
+    "per_page": 10,
+    "to": 2,
+    "total": 2
+  }
+}

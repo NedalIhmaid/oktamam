@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//company routes
+Route::get('/companies', 'CompanyController@index');
+
+//employee routes
+Route::get('/employees', 'EmployeeController@index');
