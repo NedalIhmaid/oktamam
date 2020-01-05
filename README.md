@@ -12,4 +12,6 @@ email: admin@admin.com
 password: password  
   
 ### API Documentation
-A simple Api routes created, the api docs can be accessed by the url "/docs"
+A simple Api routes created, the api docs can be accessed by the url "/docs".  
+If there was any issue with the docs, open your terminal and type
+"php artisan apidoc:generate"
